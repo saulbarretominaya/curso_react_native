@@ -12,6 +12,7 @@
   "dependencies": {
     "@expo/metro-runtime": "~4.0.1",
     "@react-native-community/picker": "^1.8.0",
+    "axios": "^1.8.1",
     "expo": "~52.0.37",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
