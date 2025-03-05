@@ -9,7 +9,7 @@ const Formulario = ({moneda,criptomoneda,guardarMoneda,guardarCriptomoneda,guard
 
   useEffect(() => {
     const consultarAPI = async () => {
-      const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USM';
+      const url = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
       const resultado = await axios.get(url);
       // guardarCriptomonedas(resultado.data.Data);
       if (resultado.data && resultado.data.Data) {
@@ -84,7 +84,6 @@ const Formulario = ({moneda,criptomoneda,guardarMoneda,guardarCriptomoneda,guard
         <Text style={styles.textoCotizar}>Cotizar</Text>
       </TouchableHighlight>
 
-      <Text> Cotizar </Text>
 
     </View>
   );

@@ -3,11 +3,13 @@ import { SafeAreaView, StyleSheet, Image, View, Text } from "react-native";
 import Header from './src/components/Header';
 import Formulario from './src/components/Formulario';
 import axios from 'axios';
+import Cotizacion from './src/components/Cotizacion';
 
 const App = () => {
   const [moneda, guardarMoneda] = useState('');
   const [criptomoneda, guardarCriptomoneda] = useState('');
   const [consultarAPI, guardarConsultarAPI] = useState(false);
+  const [resultado, guardarResultado] = useState({});
 
   useEffect(() => {
     const cotizarCriptomoneda = async () => {
@@ -24,7 +26,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Image style={styles.imagen} source={require("./assets/img/cryptomonedas.png")} />
+      {/* <Image style={styles.imagen} source={require("./assets/img/cryptomonedas.png")} /> */}
       <View style={styles.contenido}>
         <Formulario
           moneda={moneda}
@@ -33,6 +35,7 @@ const App = () => {
           guardarCriptomoneda={guardarCriptomoneda}
           guardarConsultarAPI={guardarConsultarAPI}
         />
+        <Cotizacion resultado={resultado} />
       </View>
     </>
   );
