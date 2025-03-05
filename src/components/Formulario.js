@@ -1,113 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, TouchableHighlight, Alert } from "react-native";
-import { Picker } from "@react-native-community/picker";
-import axios from "axios";
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-const Formulario = ({moneda,criptomoneda,guardarMoneda,guardarCriptomoneda,guardarConsultarAPI}) => {
+const Formulario = () => {
 
-  const [criptomonedas, guardarCriptomonedas] = useState([]);
+  const [nombre, setNombre] = useState(''); // Variables para guardar el nombre
+  const [nombreGuardado, setNombreGuardado] = useState(''); // Variable para guardar el nombre despues de ejecutar el evento
 
-  useEffect(() => {
-    const consultarAPI = async () => {
-      const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USM';
-      const resultado = await axios.get(url);
-      // guardarCriptomonedas(resultado.data.Data);
-      if (resultado.data && resultado.data.Data) {
-        guardarCriptomonedas(resultado.data.Data);
-      } else {
-        guardarCriptomonedas([]);
-      }
-    }
-
-    consultarAPI();
-  }, []);
-
-  const obtenerMoneda = (moneda) => {
-    guardarMoneda(moneda);
-  }
-
-  const obtenerCriptomoneda = cripto => {
-    guardarCriptomoneda(cripto);
-  }
-
-  const CotizarPrecio = () => {
-    if(moneda.trim() === '' || criptomoneda.trim() === '') {
-      mostrarAlerta();
-      return;
-    }
-    guardarConsultarAPI(true);
-  }
-
-  const mostrarAlerta = () => {
-    Alert.alert(
-      'Error...',
-      'Ambos campos son obligatorios',
-      [
-        { text: 'OK' }
-      ]
-    )
+  // Función para guardar el nombre
+  const EnviarInformacion = () => {
+    setNombreGuardado(nombre);
   }
 
   return (
-    <View>
-      <Text style={styles.label}>Moneda</Text>
+    <View style={styles.contenedor}>
+      <TextInput
+        style={styles.input}
+        placeholder="Ingresa tu nombre"
+        value={nombre}
+        onChangeText={setNombre}
+      />
 
-      <Picker
-        selectedValue={moneda}
-        onValueChange={(moneda) => obtenerMoneda(moneda)}
-      >
-        <Picker.Item label="-Seleccionar-" value="" />
-        <Picker.Item label="Dolar de EEUU" value="USD" />
-        <Picker.Item label="Euro" value="EUR" />
-        <Picker.Item label="Libra Esterlina" value="GBP" />
-        <Picker.Item label="Peso Mexicano" value="MXN" />
-      </Picker>
+      <Button title="Guardar Nombre" onPress={EnviarInformacion} />
 
-      <Text style={styles.label}> Criptomoneda </Text>
-
-      <Picker
-        selectedValue={criptomoneda}
-        onValueChange={cripto => obtenerCriptomoneda(cripto)}
-        itemStyle={{ height: 120 }}>
-        <Picker.Item label="-Seleccionar-" value="" />
-        {/* {criptomonedas.map(cripto => ( */}
-        {Array.isArray(criptomonedas) && criptomonedas.map(cripto => (
-          <Picker.Item
-            key={cripto.CoinInfo.Id}
-            label={cripto.CoinInfo.FullName}
-            value={cripto.CoinInfo.Name} />
-        ))}
-      </Picker>
-
-      <TouchableHighlight style={styles.btnCotizar}
-        onPress={() => CotizarPrecio()}>
-        <Text style={styles.textoCotizar}>Cotizar</Text>
-      </TouchableHighlight>
-
-      <Text> Cotizar </Text>
+      {nombreGuardado != '' ? <Text>Nombre guardado: {nombreGuardado}</Text> : null}
 
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  label: {
-    textTransform: "uppercase",
-    fontSize: 22,
-    marginVertical: 20,
+  contenedor: {
+    marginBottom: 20,
   },
-  btnCotizar: {
-    backgroundColor: "#5E49E2",
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
     padding: 10,
-    marginTop: 20,
+    width: 200,
+    marginBottom: 10,
   },
-  textoCotizar: {
-    color: "#FFF",
-    fontSize: 18,
-    textTransform: "uppercase",
-    textAlign: "center",
-  }
-
 });
 
 export default Formulario;
