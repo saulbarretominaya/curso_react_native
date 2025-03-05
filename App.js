@@ -17,6 +17,11 @@ const App = () => {
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
         const resultado = await axios.get(url);
         console.log(resultado.data.DISPLAY[criptomoneda][moneda]);
+        if (resultado.data.DISPLAY && resultado.data.DISPLAY[criptomoneda] && resultado.data.DISPLAY[criptomoneda][moneda]) {
+          guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+        } else {
+          guardarResultado({});
+        }
         guardarConsultarAPI(false);
       }
     }
@@ -26,7 +31,6 @@ const App = () => {
   return (
     <>
       <Header />
-      {/* <Image style={styles.imagen} source={require("./assets/img/cryptomonedas.png")} /> */}
       <View style={styles.contenido}>
         <Formulario
           moneda={moneda}
@@ -39,7 +43,7 @@ const App = () => {
       </View>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   imagen: {
