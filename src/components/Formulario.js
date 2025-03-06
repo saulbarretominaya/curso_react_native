@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, TouchableHighlight, Alert } from "react-native";
-import { Picker } from "@react-native-community/picker";
+import RNPickerSelect from 'react-native-picker-select';
+
 import axios from "axios";
 
-const Formulario = ({moneda,criptomoneda,guardarMoneda,guardarCriptomoneda,guardarConsultarAPI}) => {
+const Formulario = ({ moneda, criptomoneda, guardarMoneda, guardarCriptomoneda, guardarConsultarAPI }) => {
 
   const [criptomonedas, guardarCriptomonedas] = useState([]);
 
@@ -31,7 +32,7 @@ const Formulario = ({moneda,criptomoneda,guardarMoneda,guardarCriptomoneda,guard
   }
 
   const CotizarPrecio = () => {
-    if(moneda.trim() === '' || criptomoneda.trim() === '') {
+    if (moneda.trim() === '' || criptomoneda.trim() === '') {
       mostrarAlerta();
       return;
     }
@@ -52,32 +53,32 @@ const Formulario = ({moneda,criptomoneda,guardarMoneda,guardarCriptomoneda,guard
     <View>
       <Text style={styles.label}>Moneda</Text>
 
-      <Picker
-        selectedValue={moneda}
+      <RNPickerSelect
         onValueChange={(moneda) => obtenerMoneda(moneda)}
-      >
-        <Picker.Item label="-Seleccionar-" value="" />
-        <Picker.Item label="Dolar de EEUU" value="USD" />
-        <Picker.Item label="Euro" value="EUR" />
-        <Picker.Item label="Libra Esterlina" value="GBP" />
-        <Picker.Item label="Peso Mexicano" value="MXN" />
-      </Picker>
+        items={[
+          { label: "Dólar de EEUU", value: "USD" },
+          { label: "Euro", value: "EUR" },
+          { label: "Libra Esterlina", value: "GBP" },
+          { label: "Peso Mexicano", value: "MXN" },
+        ]}
+        placeholder={{ label: "-Seleccionar-", value: "" }}
+      />
 
       <Text style={styles.label}> Criptomoneda </Text>
 
-      <Picker
-        selectedValue={criptomoneda}
-        onValueChange={cripto => obtenerCriptomoneda(cripto)}
-        itemStyle={{ height: 120 }}>
-        <Picker.Item label="-Seleccionar-" value="" />
-        {/* {criptomonedas.map(cripto => ( */}
-        {Array.isArray(criptomonedas) && criptomonedas.map(cripto => (
-          <Picker.Item
-            key={cripto.CoinInfo.Id}
-            label={cripto.CoinInfo.FullName}
-            value={cripto.CoinInfo.Name} />
-        ))}
-      </Picker>
+      <RNPickerSelect
+        onValueChange={(cripto) => obtenerCriptomoneda(cripto)}
+        items={
+          Array.isArray(criptomonedas)
+            ? criptomonedas.map((cripto) => ({
+              label: cripto.CoinInfo.FullName,
+              value: cripto.CoinInfo.Name,
+            }))
+            : []
+        }
+        placeholder={{ label: "-Seleccionar-", value: "" }}
+        style={{ inputIOS: { height: 120 }, inputAndroid: { height: 120 } }}
+      />
 
       <TouchableHighlight style={styles.btnCotizar}
         onPress={() => CotizarPrecio()}>
