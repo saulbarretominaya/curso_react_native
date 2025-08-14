@@ -2,11 +2,11 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { BoxObjectModelScreen } from './src/screens/BoxObjectModelScreen'
 
-export default function App() {           // <-- default export
-  return (
-    <SafeAreaView>
-      <BoxObjectModelScreen />
-    </SafeAreaView>
-  );
+export const App = () => {
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <BoxObjectModelScreen />
+        </SafeAreaView>
+    )
 }
 
