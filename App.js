@@ -8,7 +8,7 @@ import TareaScreen from './src/screens/TareaScreen'
 export const App = () => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <FlexScreen />
+            <TareaScreen />
         </SafeAreaView>
     )
 }
