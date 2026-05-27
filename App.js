@@ -1,17 +1,27 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native'
-import { BoxObjectModelScreen } from './src/screens/BoxObjectModelScreen'
-import  {DimensionesScreen } from './src/screens/DimensionesScreen'
-import { FlexScreen } from './src/screens/FlexScreen'
-import TareaScreen from './src/screens/TareaScreen'
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
-export const App = () => {
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <TareaScreen />
-        </SafeAreaView>
-    )
+export default function App() {
+  return (
+
+    // <SafeAreaView>
+      <View style={styles.container}>
+        <Text>Hola como estas</Text>
+        <StatusBar style="auto" />
+      </View>
+    // </SafeAreaView>
+    // <View style={styles.container}>
+    //   <Text>Hola como estas</Text>
+    //   <StatusBar style="auto" />
+    // </View>
+  );
 }
 
-
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
+});
