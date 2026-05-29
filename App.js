@@ -1,11 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import Width_Height from './src/components/Width_Height';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
+
+import AppBoxModel from './src/components/BoxModel/AppBoxModel';
+import AppFlexBox from './src/components/FlexBox/AppFlexBox';
+import AppPosition from './src/components/Position/AppPosition';
+
 
 export default function App() {
   return (
     <>
-      <Width_Height />
+      {/* <AppBoxModel /> */}
+      {/* <AppFlexBox /> */}
+      {/* <AppPosition /> */}
     </>
   );
 }
