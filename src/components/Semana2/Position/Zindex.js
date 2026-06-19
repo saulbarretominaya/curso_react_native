@@ -1,49 +1,46 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function FlexDirection() {
+const  Zindex = () => {
     return (
         <View style={styles.padre}>
-            <View style={styles.hijo}></View>
+            <View style={styles.hijo1}></View>
             <View style={styles.hijo2}></View>
             <View style={styles.hijo3}></View>
         </View>
     );
 }
 
+export default Zindex;
+
 const styles = StyleSheet.create({
 
     padre: {
         backgroundColor: 'black',
-        height: 300,
         width: 300,
-        flexDirection: 'column',
-        // flexDirection:'row'
+        height: 300, 
     },
 
-    hijo: {
+    hijo1: {
         backgroundColor: 'red',
         width: 100,
-        height: 100
-        
+        height: 100,
     },
-
     hijo2: {
         backgroundColor: 'blue',
         width: 100,
         height: 100,
+        position: 'absolute',
+        left: 50,
+        top:50,
+        zIndex: 1,
     },
-
     hijo3: {
         backgroundColor: 'green',
         width: 100,
         height: 100,
     }
-
 });
 
-// flexDirection: 'column' (predeterminado) organiza los elementos de arriba hacia abajo, mientras que flexDirection: 'row' los organiza de izquierda a derecha.
-// column organiza los hijos verticalmente.
-// row organiza los hijos horizontalmente.
-
-
-
+// zIndex controla el orden de apilamiento de los componentes.
+// El componente con mayor zIndex se muestra por encima de los demás.
+// Solo funciona con componentes posicionados (relative, absolute o fixed).

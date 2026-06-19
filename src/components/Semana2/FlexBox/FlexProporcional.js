@@ -1,35 +1,40 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function FlexBasico() {
+const FlexProporcional = () => {
     return (
         <View style={styles.padre}>
             <View style={styles.hijo}></View>
+            <View style={styles.hijo2}></View>
         </View>
 
     );
 }
 
+export default FlexProporcional;
+
 const styles = StyleSheet.create({
 
     padre: {
         backgroundColor: 'black',
-        height: 150,
-        width: 150,
-        
+        height: 300,
+        width: 300,
+
     },
 
     hijo: {
         backgroundColor: 'red',
-        // width: 100,
-        // height: 100,
+        flex: 1,
+    },
+    hijo2: {
+        backgroundColor: 'blue',
         flex: 1,
     },
 
 });
 
 
-// Sin Flex el hijo tiene tamaño fijo con width y height.
-// Con Flex el hijo se adapta automáticamente al tamaño del padre
+// Flex trabaja por proporciones entre hermanos. Pero sin salir del espacio del padre.
+
 
 
 

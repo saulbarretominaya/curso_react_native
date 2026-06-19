@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function JustifyContent() {
+const JustifyContent = () => {
     return (
         <View style={styles.padre}>
             <View style={styles.hijo}></View>
@@ -10,6 +10,8 @@ export default function JustifyContent() {
 
     );
 }
+
+export default JustifyContent;
 
 const styles = StyleSheet.create({
 

@@ -1,19 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
-
-import AppBoxModel from './src/components/BoxModel/AppBoxModel';
-import AppFlexBox from './src/components/FlexBox/AppFlexBox';
-import AppPosition from './src/components/Position/AppPosition';
+import AppSemanaDos from './src/components/Semana2/AppSemanaDos'
+import AppSemanaTres from './src/components/Semana3/AppSemanaTres'
 
 
-export default function App() {
+const App = () => {
+
   return (
     <>
-      {/* <AppBoxModel /> */}
-      {/* <AppFlexBox /> */}
-      {/* <AppPosition /> */}
+      {/* <AppSemanaDos /> */}
+      <AppSemanaTres />
     </>
-  );
+  )
 }
 
+export default App
 

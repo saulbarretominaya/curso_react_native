@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function PadreHijo() {
+const PadreHijo = ()  => {
     return (
         <View style={styles.padre}>
             <View style={styles.hijo}></View>
@@ -8,6 +8,8 @@ export default function PadreHijo() {
 
     );
 }
+
+export default PadreHijo;
 
 const styles = StyleSheet.create({
 

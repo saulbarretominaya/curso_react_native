@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function Zindex() {
+const Relative = () => {
     return (
         <View style={styles.padre}>
             <View style={styles.hijo1}></View>
@@ -10,12 +10,14 @@ export default function Zindex() {
     );
 }
 
+export default Relative;
+
 const styles = StyleSheet.create({
 
     padre: {
         backgroundColor: 'black',
         width: 300,
-        height: 300, 
+        height: 300,
     },
 
     hijo1: {
@@ -27,10 +29,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         width: 100,
         height: 100,
-        position: 'absolute',
+        position: 'relative',
         left: 50,
-        top:50,
-        zIndex: 1,
     },
     hijo3: {
         backgroundColor: 'green',
@@ -39,6 +39,5 @@ const styles = StyleSheet.create({
     }
 });
 
-// zIndex controla el orden de apilamiento de los componentes.
-// El componente con mayor zIndex se muestra por encima de los demás.
-// Solo funciona con componentes posicionados (relative, absolute o fixed).
+// Relative mueve visualmente el componente, pero mantiene reservado su espacio original dentro del flujo.
+// left empuja el componenente hacia la derecha

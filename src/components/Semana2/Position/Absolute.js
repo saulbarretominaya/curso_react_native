@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function Absolute() {
+const Absolute = () =>  {
     return (
         <View style={styles.padre}>
             <View style={styles.hijo1}></View>
@@ -9,6 +9,8 @@ export default function Absolute() {
         </View>
     );
 }
+
+export default Absolute;
 
 const styles = StyleSheet.create({
 

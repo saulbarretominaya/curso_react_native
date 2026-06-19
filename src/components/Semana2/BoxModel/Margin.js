@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function Margin() {
+const Margin = () => {
     return (
         <View>
             <View style={styles.caja1}></View>
@@ -9,6 +9,9 @@ export default function Margin() {
 
     );
 }
+
+export default Margin;
+
 
 const styles = StyleSheet.create({
 

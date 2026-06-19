@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function Padding() {
+const Padding = () => {
     return (
         <View>
             <View style={styles.caja1}></View>
@@ -12,6 +12,8 @@ export default function Padding() {
 
     );
 }
+
+export default Padding;
 
 const styles = StyleSheet.create({
 

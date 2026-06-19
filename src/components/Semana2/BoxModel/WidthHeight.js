@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function WidthHeight() {
+const WidthHeight = () => {
     return (
         <View>
             <View style={styles.caja1}></View>
@@ -8,6 +8,8 @@ export default function WidthHeight() {
 
     );
 }
+
+export default WidthHeight;
 
 const styles = StyleSheet.create({
 
