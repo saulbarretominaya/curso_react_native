@@ -1,6 +1,10 @@
 import UsoText from "./UsoText";
 import UsoTextInput from "./UsoTextInput";
 import UsoTouchableOpacity from "./UsoTouchableOpacity";
+import UsoUseOnPress from "./UsoOnPress";
+import UsoUseState from "./UsoUseState";
+import UsoFormularioBasico from "./UsoFormularioBasico";
+
 
 const AppSemanaTres = () => {
   2
@@ -9,7 +13,10 @@ const AppSemanaTres = () => {
     <>
       {/* <UsoText/> */}
       {/* <UsoTextInput /> */}
-      <UsoTouchableOpacity/>
+      {/* <UsoTouchableOpacity/> */}
+      {/* <UsoUseOnPress/> */}
+      {/* <UsoUseState/> */}
+      <UsoFormularioBasico />
     </>
   );
 }

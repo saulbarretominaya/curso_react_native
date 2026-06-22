@@ -74,7 +74,8 @@ const estilos = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    
   },
 
   textoBotones: {
