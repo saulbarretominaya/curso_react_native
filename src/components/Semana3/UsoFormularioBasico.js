@@ -13,39 +13,36 @@ const UsoFormularioBasico = () => {
   const [apellido, setApellido] = useState('');
 
   //Declaracion de variables de resultado
-  const [resultado, setResultado] = useState('');
+  const [objPersona, setObjPersona] = useState('');
 
   //Proceso
-  const registrarDatos = () => {
-    setResultado({
+  const fnRegistrarDatos = () => {
+    
+    let objPersona = {
       'nombre_alumno': nombre,
       'apellido_alumno': apellido
-    });
-
-    // Esto no se usa porque se sobreescribe el resultado, se pierde el valor anterior.
-    // setResultado(nombre);
-    // setResultado(apellido);
+    }
+    setObjPersona(objPersona);
   }
 
-  const limpiarDatos = () => {
+  const fnLimpiarDatos = () => {
     setNombre('');
     setApellido('');
-    setResultado('');
+    setObjPersona('');
   }
 
   //Resultado del proceso
   let resultadoJSX = null;
-  if (resultado != '') {
+  if (objPersona != '') {
     // console.log(resultado);
     resultadoJSX =
       <View style={estilos.cajaSalida}>
         <Text>Los datos registrados son:</Text>
-        <Text>Nombre: {resultado.nombre_alumno}</Text>
-        <Text>Apellido: {resultado.apellido_alumno}</Text>
+        <Text>Nombre: {objPersona.nombre_alumno}</Text>
+        <Text>Apellido: {objPersona.apellido_alumno}</Text>
       </View>
-
   } else {
-    resultadoJSX = <Text>No existe Datos Registrados</Text>
+    resultadoJSX = <View style={estilos.cajaSalida}><Text>No existe Datos Registrados</Text></View>
   }
 
 
@@ -54,45 +51,38 @@ const UsoFormularioBasico = () => {
       <View style={estilos.contenedorPrincipal}>
 
         <View style={estilos.cajaTitulo}>
-          <Text style={estilos.textTitulo}>Registrar Alumnos</Text>
+          <Text style={estilos.textTitulo}>Registrar Personal</Text>
         </View>
 
         {/* Entradas */}
         <TextInput
           style={estilos.input}
           value={nombre}
-          placeholder="Ingrese su Nombre"
           onChangeText={setNombre}
+          placeholder="Ingrese Nombre"
         >
         </TextInput>
 
         <TextInput
           style={estilos.input}
           value={apellido}
-          placeholder="Ingrese su Apellido"
           onChangeText={setApellido}
+          placeholder="Ingrese Apellido"
         >
         </TextInput>
 
-
-        {/* Interracion del Proceso */}
+        {/* Botones */}
         <View style={estilos.cajaBotones}>
-          <TouchableOpacity
-            style={estilos.botonLimpiar}
-            onPress={limpiarDatos}
-          >
-            <Text style={estilos.textLimpiar}>Limpiar</Text>
+          <TouchableOpacity style={estilos.botonLimpiar} onPress={fnLimpiarDatos}>
+            <Text style={estilos.textBotones}>Registrar</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={estilos.botonRegistrar}
-            onPress={registrarDatos}
-          >
-            <Text style={estilos.textRegistrar}>Registrar</Text>
+
+          <TouchableOpacity style={estilos.botonRegistrar} onPress={fnRegistrarDatos}>
+            <Text style={estilos.textBotones}>Registrar</Text>
           </TouchableOpacity>
         </View>
 
         {/* Pintar Resultado */}
-
         {
           resultadoJSX
         }
@@ -129,40 +119,33 @@ const estilos = StyleSheet.create({
 
   cajaBotones: {
     flexDirection: 'row',
-    alignItems: 'center',
     marginTop: 10,
-    justifyContent: 'space-evenly'
-  },
-
-  botonLimpiar: {
-    backgroundColor: 'orange',
-    width: '100',
-    height: '40',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-  },
-
-  textLimpiar: {
-    color: 'white',
+    gap: 5,
+    
   },
 
   botonRegistrar: {
     backgroundColor: 'red',
-    width: '100',
-    height: '40',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
     borderRadius: 5,
+    padding: 10,
+    alignItems: 'center',
   },
 
-  textRegistrar: {
+  botonLimpiar: {
+    backgroundColor: 'orange',
+    flex: 1,
+    borderRadius: 5,
+    padding: 10,
+    alignItems: 'center',
+  },
+
+  textBotones: {
     color: 'white',
   },
 
   cajaSalida: {
-    marginTop: 20,
-    alignItems: 'center',
+    marginTop: 10,
   }
 
 
