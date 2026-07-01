@@ -39,7 +39,6 @@ const estilos = {
 }
 
 // El componente Text se utiliza para mostrar texto en la pantalla. 
-// Permite aplicar estilos y formateo al texto, como cambiar el tamaño, color, fuente, etc. 
 // Es un componente fundamental para mostrar información en una aplicación React Native.
 
 

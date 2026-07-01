@@ -16,7 +16,7 @@ const AppSemanaTres = () => {
       {/* <UsoTouchableOpacity/> */}
       {/* <UsoUseOnPress/> */}
       {/* <UsoUseState/> */}
-      <UsoFormularioBasico />
+      {/* <UsoFormularioBasico /> */}
     </>
   );
 }
