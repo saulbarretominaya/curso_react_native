@@ -1,6 +1,3 @@
-## Ejecutar archivo Javascrip por Bash gracias a Node.js
-node index.js
-
 ## Comando oficial para crear proyectos:
 npx create-expo-app nombredemiapp --template blank
 ### Selecionar SDK 54:
@@ -46,5 +43,6 @@ npx expo start o npm start
     - hooks,
     - lógica de interfaz.
     - React Native utiliza React internamente para construir la aplicación móvil.
+    
 ### rn
 * rnfes te permite autocomplemetar clases en React Native gracias a las extensiones instaladas.
