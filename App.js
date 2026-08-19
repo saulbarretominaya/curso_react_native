@@ -1,17 +1,12 @@
-import AppSemanaDos from './src/components/Semana2/AppSemanaDos'
-import AppSemanaTres from './src/components/Semana3/AppSemanaTres'
-import AppSemanaCuatro from './src/components/Semana4/AppSemanaCuatro'
-import AppSemanaCinco from './src/components/Semana5/AppSemanaCinco'
+import AppModuloUno from './src/components/Modulo1/AppModuloUno'
+import AppModuloDos from './src/components/Modulo2/AppModuloDos'
 
 const App = () => {
 
   return (
     <>
-      {/* <AppSemanaDos /> */}
-      {/* <AppSemanaTres /> */}
-      {/* <AppSemanaCuatro /> */}
-      {/* <AppSemanaCinco /> */}
-      {/* <AppApiEmpleados /> */}
+      {/* <AppModuloUno /> */}
+      <AppModuloDos />
     </>
   )
 }

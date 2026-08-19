@@ -5,7 +5,7 @@ import Padding from './Padding';
 const AppBoxModel = ()=> {
     return (
         <>
-            <WidthHeight />
+            {/* <WidthHeight /> */}
             {/* <Margin /> */}
             {/* <Padding /> */}
         </>

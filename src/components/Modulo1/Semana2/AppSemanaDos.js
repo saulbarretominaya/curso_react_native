@@ -7,7 +7,7 @@ const AppSemanaDos = () => {
 
   return (
     <>
-      {/* <AppBoxModel/> */}
+      <AppBoxModel/>
       {/* <AppPosition/> */}
       {/* <AppFlexBox/> */}
     </>
