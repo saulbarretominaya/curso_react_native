@@ -14,7 +14,7 @@ const App01 = () => {
 
 
     const consultarApiPersonas = async () => {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        // await new Promise(resolve => setTimeout(resolve, 3000));
         const obtenerDatosApi = await fetch("https://6a7fc151ec7a640e63ab7155.mockapi.io/Personas");
         const convertirJson = await obtenerDatosApi.json();
         // console.log(JSON.stringify(convertirJson, null, 2));
@@ -64,7 +64,7 @@ const estilos = StyleSheet.create({
     },
 
     contenedor: {
-        paddingTop: 30,
+        paddingTop: 50,
         paddingHorizontal: 10,
     }
 })

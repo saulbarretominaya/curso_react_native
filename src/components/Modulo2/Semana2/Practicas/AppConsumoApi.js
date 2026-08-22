@@ -49,3 +49,4 @@ export default AppConsumoApi
 
 // async → indica que la función trabajará con operaciones asíncronas.
 // await → espera el resultado de una operación antes de continuar con la siguiente línea dentro de la función.
+
