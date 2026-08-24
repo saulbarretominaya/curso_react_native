@@ -3,39 +3,43 @@ import { Text, Button, StyleSheet, View, TouchableOpacity } from "react-native"
 import { Avatar, Card } from "react-native-paper";
 
 
-
 {/* Recibo el objeto */ }
 const DetalleEmpleados = (objeto) => {
 
-    console.log(objeto);
-    console.log(JSON.stringify(objeto.empleado, null, 2));
-
-
+    // Recuperamos la funcion eliminar
+    const onEliminar = objeto.onEliminar;
 
     return (
         <>
-            {objeto.empleado && (
-                <Card style={estilos.detalle}>
-                    <Card.Title
-                        title={objeto.empleado.nombre}
-                        subtitle={objeto.empleado.cargo}
-                        left={() => (
-                            <Avatar.Image
-                                size={50}
-                                source={{ uri: objeto.empleado.imagen }}
-                            />
-                        )}
-                        titleStyle={estilos.titulo}
-                        subtitleStyle={estilos.subtitulo}
-                    />
+            {objeto.empleados && (
+                <>
+                    <Card style={estilos.detalle}>
+                        <Card.Title
+                            title={objeto.empleados.nombre}
+                            subtitle={objeto.empleados.cargo}
+                            left={() => (
+                                <Avatar.Image
+                                    size={50}
+                                    source={{ uri: objeto.empleados.imagen }}
+                                />
+                            )}
+                            titleStyle={estilos.titulo}
+                            subtitleStyle={estilos.subtitulo}
+                        />
 
-                    <Card.Content>
-                        <Text style={estilos.texto}>Correo: {objeto.empleado.correo}</Text>
-                        <Text style={estilos.texto}>Celular: {objeto.empleado.celular}</Text>
-                        <Text style={estilos.texto}>País: {objeto.empleado.pais}</Text>
-                        <Text style={estilos.texto}>Dirección: {objeto.empleado.direccion}</Text>
-                    </Card.Content>
-                </Card>
+                        <Card.Content>
+                            <Text style={estilos.texto}>Correo: {objeto.empleados.correo}</Text>
+                            <Text style={estilos.texto}>Celular: {objeto.empleados.celular}</Text>
+                            <Text style={estilos.texto}>País: {objeto.empleados.pais}</Text>
+                            <Text style={estilos.texto}>Dirección: {objeto.empleados.direccion}</Text>
+                        </Card.Content>
+                    </Card>
+                    <Button
+                        title="Eliminar empleado"
+                        onPress={() => onEliminar(objeto.empleados)}
+                        // onPress={() => console.log(objeto.empleados)}
+                    />
+                </>
             )}
         </>
     )
@@ -53,7 +57,7 @@ const estilos = StyleSheet.create({
     },
     titulo: {
         // marginLeft: 10,
-        fonteight:"bold",
+        fonteight: "bold",
         // fontSize:10
     },
     subtitulo: {

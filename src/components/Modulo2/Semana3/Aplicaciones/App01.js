@@ -1,54 +1,72 @@
 import { useEffect, useState } from "react";
-import { Text } from "react-native";
-import { obtenerEmpleados, crearEmpleado, actualizarEmpleado, eliminarEmpleado } from "./servicios/empleadoService";
+import { obtenerEmpleados, crearEmpleado, actualizarEmpleado, eliminarEmpleado } from "./servicios/EmpleadoService";
 import FormularioEmpleado from "./componentes/FormularioEmpleado";
+import ListaEmpleados from "../../Semana3/Aplicaciones/componentes/ListaEmpleados";
+import DetalleEmpleados from "../../Semana3/Aplicaciones/componentes/DetalleEmpleados";
+import { ScrollView } from "react-native";
 
 const App01 = () => {
 
-    const [personas, setPersonas] = useState([]);
-    // console.log(JSON.stringify(empleadoSeleccionado, null, 2));
-
-    const empleadoActualizado = {
-        nombre: "Saul",
-        cargo: "Arquitecto de Software"
-    }
+    const [empleados, setEmpleados] = useState([]);
+    const [empleadoSeleccionado, setEmpleadoSeleccionado] = useState(null);
 
     useEffect(() => {
         const consultar = async () => {
-            // const resultado = await actualizarEmpleado("5", empleadoActualizado);
-            const resultado = await eliminarEmpleado("5");
             const datos = await obtenerEmpleados();
-            console.log("Empleados obtenidos:");
-            console.log(JSON.stringify(datos, null, 2));
-            setPersonas(datos);
+            setEmpleados(datos);
         }
         consultar();
-
+        // Ese [] significa: "Ejecuta este useEffect solamente cuando App01 se monta por primera vez
     }, []);
 
     const fnGuardarEmpleado = async (empleado) => {
-        const resultado = await crearEmpleado(empleado);
-        console.log("Empleado creado:");
-        console.log(JSON.stringify(resultado, null, 2));
+        const nuevo_empleado = await crearEmpleado(empleado);
+        const unir_empleados = [...empleados, nuevo_empleado];
+        setEmpleados(unir_empleados);
     }
 
-    const nombre = "Saul";
+    const fnActualizarEmpleado = async (empleado) => {
+        // Aquí me devuelve todo el arreglo que modifique, una fila devuelve el PUT
+        const empleadoActualizado = await actualizarEmpleado(empleado.id, empleado);
+        //Y aqui lo reemplazo por el existente para que se actualice en el UI, por eso que es obligatorio traer la constante 
+        const empleadosActualizados = empleados.map((empleadoActual) => {
+            if (empleadoActual.id === empleadoActualizado.id) {
+                return empleadoActualizado;
+            }
+            return empleadoActual;
+        });
+        setEmpleados(empleadosActualizados);
+    }
+
+    const fnEliminarEmpleado = async (empleado) => {
+        // Recupero el id, porque es lo unico que necesito
+        const idEmpleado = empleado.id;
+        // Aqui no es necesario crear una constante porque no hay nada que reemplazar, igual devuelve una fila el DELETE, Pero no lo usaremos
+        await eliminarEmpleado(idEmpleado);
+        const empleadosActualizados = empleados.filter((empleadoActual) => empleadoActual.id !== idEmpleado);
+        setEmpleados(empleadosActualizados);
+        setEmpleadoSeleccionado(null);
+    }
+
     return (
         <>
+            <ScrollView>
+                <FormularioEmpleado
+                    onGuardar={fnGuardarEmpleado}
+                    onActualizar={fnActualizarEmpleado}
+                    empleado={empleadoSeleccionado}
+                />
+                <ListaEmpleados
+                    empleados={empleados}
+                    onSelect={setEmpleadoSeleccionado}
+                />
 
-            <FormularioEmpleado
-                tipo_sexo={true}
-                nombre={nombre}
-                onGuardar={fnGuardarEmpleado}
-            />
+                <DetalleEmpleados
+                    empleados={empleadoSeleccionado}
+                    onEliminar={fnEliminarEmpleado}
+                />
 
-
-            {/* {personas.map((value) => (
-                <Text key={value.id}>
-                    {value.nombre}
-                </Text>
-            ))} */}
-
+            </ScrollView>
         </>
     );
 }

@@ -7,16 +7,19 @@ import { Avatar, Card } from "react-native-paper";
 {/* Recibo el objeto */ }
 const ListaEmpleados = (objeto) => {
 
-    const personas = objeto.personas;
+    const empleados = objeto.empleados;
     const seleccionarEmpleado = objeto.onSelect;
-    // console.log(objeto.onSelect);
-
 
     return (
         <>
             {/* value representa cada elemento del arreglo, tener en cuenta por el seleccionarEmpleado */}
-            {personas.map((value) => (
-                <Card key={value.id} onPress={() => seleccionarEmpleado(value)} style={estilos.card}>
+            {empleados.map((value) => (
+                <Card key={value.id} onPress={() => {
+                    // console.log("Empleado seleccionado:");
+                    // console.log(JSON.stringify(value, null, 2));
+                    seleccionarEmpleado(value)
+                }
+                } style={estilos.card}>
                     <Card.Title
                         title={value.nombre}
                         subtitle={value.cargo}

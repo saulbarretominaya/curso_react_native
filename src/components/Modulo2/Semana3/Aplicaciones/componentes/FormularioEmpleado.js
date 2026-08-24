@@ -1,24 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, TextInput, View, StyleSheet } from "react-native";
 
 const FormularioEmpleado = (objeto) => {
 
     // Recibo la funcion como prop y lo almaceno en una variable para poder usarla dentro del componente.
     const onGuardar = objeto.onGuardar;
+    const onActualizar = objeto.onActualizar;
+    const empleado = objeto.empleado;
 
     const [nombre, setNombre] = useState("");
     const [cargo, setCargo] = useState("");
 
 
+    useEffect(() => {
+        // De esta forma es que se setean los datos en lost TextInput
+        if (empleado) {
+            setNombre(empleado.nombre);
+            setCargo(empleado.cargo);
+        }
+        // Ese [empleado] significa: "Ejecuta nuevamente este useEffect cuando cambie empleado."
+    }, [empleado]);
+
+
     const guardar = () => {
-       
-        const empleado = {
-            nombre: nombre,
-            cargo: cargo
-        };
-        onGuardar(empleado);
-        setNombre("");
-        setCargo("");
+
+
+
+        if (empleado) {
+            // estamos editando
+            const empleadoDatos = {
+                id: empleado.id,
+                nombre: nombre,
+                cargo: cargo
+            };
+            // console.log(empleadoDatos)
+            onActualizar(empleadoDatos);
+        } else {
+            // estamos creando
+            const empleado = {
+                nombre: nombre,
+                cargo: cargo
+            };
+            onGuardar(empleado);
+            setNombre("");
+            setCargo("");
+        }
     }
 
     return (
@@ -38,7 +64,7 @@ const FormularioEmpleado = (objeto) => {
             ></TextInput>
 
             <Button
-                title="Crear empleado"
+                title={empleado ? "Actualizar Empleado" : "Registrar Empleado"}
                 onPress={guardar}
             />
 
