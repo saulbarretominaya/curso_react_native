@@ -2,6 +2,7 @@
 import AppSemanaUno from './Semana1/AppSemanaUno'
 import AppSemanaDos from './Semana2/AppSemanaDos'
 import AppSemanaTres from './Semana3/AppSemanaTres'
+import AppSemanaCuatro from './Semana4/AppSemanaCuatro'
 
 
 const AppModuloDos = () => {
@@ -11,6 +12,7 @@ const AppModuloDos = () => {
       {/* <AppSemanaUno /> */}
       {/* <AppSemanaDos /> */}
       <AppSemanaTres />
+      {/* <AppSemanaCuatro /> */}
     </>
   )
 }

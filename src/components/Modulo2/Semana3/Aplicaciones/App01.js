@@ -65,7 +65,6 @@ const App01 = () => {
                     empleados={empleadoSeleccionado}
                     onEliminar={fnEliminarEmpleado}
                 />
-
             </ScrollView>
         </>
     );
