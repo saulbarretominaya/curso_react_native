@@ -25,11 +25,33 @@ npx expo start o npm start
     - levantar React Native con Expo.
     
 ### Expo SDK 54
+"Al seleccionar SDK 54, Expo utiliza versiones compatibles con el ecosistema del proyecto."
 * Expo simplifica el trabajo con React Native proporcionando:
-    - configuración automática
-    - compatibilidad entre versiones
-    - herramientas listas para desarrollo móvil.
-    - Al seleccionar SDK 54, Expo instala automáticamente las versiones compatibles del ecosistema.
+    - configuración y herramientas para el desarrollo móvil.
+    - compatibilidad entre versiones de Expo, React Native y sus
+      dependencias.
+    - APIs y funcionalidades para acceder a diferentes capacidades
+      del dispositivo.
+* Dentro del ecosistema Expo podemos encontrar funcionalidades como:
+    - SDK de Expo y sus versiones.
+    - Cámara.
+    - Imágenes.
+    - Iconos. [https://docs.expo.dev/guides/icons/]
+    - Notificaciones.
+    - Almacenamiento.
+    - Ubicación.
+    - Permisos.
+    - Sensores.
+    - Componentes y APIs disponibles.
+* Al instalar nuevas librerías, se recomienda utilizar los comandos
+  de Expo cuando corresponda para obtener versiones compatibles con
+  el SDK utilizado.
+* Expo cuenta con documentación oficial donde se pueden consultar las
+  funcionalidades disponibles, sus configuraciones, versiones y
+  compatibilidad.
+**### Documentación oficial**
+[https://docs.expo.dev/]
+
 
 ### React Native 0.81.x
 * Es el framework principal que utilizamos para construir aplicaciones móviles Android e iOS usando JavaScript.
